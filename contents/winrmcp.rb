@@ -51,7 +51,7 @@ when 'kerberos'
 when 'plaintext'
   winrm = WinRM::WinRMWebService.new(endpoint, :plaintext, user: user, pass: pass, disable_sspi: true)
 when 'ssl'
-  winrm = WinRM::WinRMWebService.new(endpoint, :ssl, user: user, pass: pass, disable_sspi: true)
+  winrm = WinRM::WinRMWebService.new(endpoint, :ssl, user: user, pass: pass, disable_sspi: true, :no_ssl_peer_verification => true)
 else
   fail "Invalid authtype '#{auth}' specified, expected: kerberos, plaintext, ssl."
 end
